@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".InstructionActivity"
+            android:label="@string/title_activity_instruction"
+            android:parentActivityName=".MainMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.odi.sol.dgame.MainMenuActivity" />
+        </activity>
     </application>
 
 </manifest>

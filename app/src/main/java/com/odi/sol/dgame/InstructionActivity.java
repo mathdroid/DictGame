@@ -1,34 +1,24 @@
 package com.odi.sol.dgame;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 
-public class MainMenuActivity extends Activity {
-
-    private Button btnInstruction;
+public class InstructionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //VIEWS
-        setContentView(R.layout.activity_main_menu);
-        Button btnInstruction = (Button) findViewById(R.id.buttonInstruction);
-
-        //CREATE LISTENERS
-        createListeners();
+        setContentView(R.layout.activity_instruction);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.instruction, menu);
         return true;
     }
 
@@ -42,16 +32,5 @@ public class MainMenuActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void createListeners() {
-        btnInstruction.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View V){
-                Intent i = new Intent(V.getContext(),InstructionActivity.class);
-                //String message = srchBar.getText().toString();
-                //i.putExtra(EXTRA_MESSAGE, message);
-                startActivity(i);
-            }
-        });
     }
 }
