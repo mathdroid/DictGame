@@ -2,6 +2,7 @@ package com.odi.sol.dgame;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +12,7 @@ import android.widget.Button;
 
 public class MainMenuActivity extends Activity {
 
-    private Button btnInstruction;
+    Button btnInstruction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +20,33 @@ public class MainMenuActivity extends Activity {
         //VIEWS
         setContentView(R.layout.activity_main_menu);
         Button btnInstruction = (Button) findViewById(R.id.buttonInstruction);
+        Button btnGame = (Button) findViewById(R.id.buttonGame1);
+        Button btnAbout = (Button) findViewById(R.id.buttonAbout);
+
 
         //CREATE LISTENERS
-        createListeners();
+        //createListeners();
+        btnInstruction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenuActivity.this, InstructionActivity.class);
+                startActivity(i);
+            }
+        });
+        btnGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenuActivity.this, GameActivity.class);
+                startActivity(i);
+            }
+        });
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenuActivity.this, AboutActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
 

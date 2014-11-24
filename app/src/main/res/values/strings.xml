@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- APP -->
     <string name="app_name">DGame</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_instruction">InstructionActivity</string>
+
+    <!-- MainMenu -->
     <string name="text_mainmenu">THIS IS MAIN MENU</string>
+    <string name="btn_instruction">Instructions</string>
+    <string name="btn_game1">Game One</string>
+    <string name="btn_about">About the App</string>
+
+    <!-- Instructions -->
     <string name="text_instruction">THIS IS INSTRUCTION</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+
 </resources>
