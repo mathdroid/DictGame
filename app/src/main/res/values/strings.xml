@@ -17,5 +17,6 @@
     <string name="text_instruction">THIS IS INSTRUCTION</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_result">ResultActivity</string>
 
 </resources>
