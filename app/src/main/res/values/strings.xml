@@ -9,14 +9,35 @@
 
     <!-- MainMenu -->
     <string name="text_mainmenu">THIS IS MAIN MENU</string>
+    <string name="text_game_title">Findez.Co</string>
+    <string name="text_game_subtitle">Just play and get money</string>
+    <string name="text_game_choose">Choose difficulty:</string>
     <string name="btn_instruction">Instructions</string>
-    <string name="btn_game1">Game One</string>
+
+    <string name="btn_game1">New Game</string>
     <string name="btn_about">About the App</string>
+
+    <string name="btn_result">DEBUG RESULTS</string>
 
     <!-- Instructions -->
     <string name="text_instruction">THIS IS INSTRUCTION</string>
+    <string name="text_about">About the game: </string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_result">ResultActivity</string>
+
+
+    <string name="result">Saya akan membagikan</string>
+    <string name="result_maaf">Maaf, saya akan membagikan</string>
+    <string name="result_1_anda">70.000</string>
+    <string name="result_1_saya">130.000</string>
+    <string name="result_2_anda">70.000</string>
+    <string name="result_2_saya">130.000</string>
+    <string name="result_3_anda">1.300.000</string>
+    <string name="result_3_saya">1.700.000</string>
+    <string name="result_4_anda">6.500.000</string>
+    <string name="result_4_saya">8.500.000</string>
+    <string name="result_untukanda">untuk anda, dan</string>
+    <string name="result_untuksaya">untuk saya.</string>
 
 </resources>

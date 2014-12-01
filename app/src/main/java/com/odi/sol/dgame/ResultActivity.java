@@ -1,9 +1,12 @@
 package com.odi.sol.dgame;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class ResultActivity extends Activity {
@@ -11,7 +14,36 @@ public class ResultActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.activity_result);Intent intent = getIntent();
+
+        final int gameInt = intent.getIntExtra("GAMEINT",0);
+
+        TextView resText = (TextView) findViewById(R.id.txtRes1);
+        TextView resText2 = (TextView) findViewById(R.id.txtRes2);
+        TextView resText3 = (TextView) findViewById(R.id.txtRes3);
+        TextView numText = (TextView) findViewById(R.id.txtResNum1);
+        TextView numText2 = (TextView) findViewById(R.id.txtResNum2);
+        Typeface typeSub = Typeface.createFromAsset(getAssets(), "fonts/game_over.ttf");
+        Typeface typeTitle = Typeface.createFromAsset(getAssets(), "fonts/ka1.ttf");
+        resText.setTypeface(typeSub);
+        resText2.setTypeface(typeSub);
+        resText3.setTypeface(typeSub);
+        numText.setTypeface(typeTitle);
+        numText2.setTypeface(typeTitle);
+
+        if (gameInt==1) {
+            resText.setText(getString(R.string.result));
+        }
+        if (gameInt==3) {
+            numText.setText(getString(R.string.result_3_anda));
+            numText2.setText(getString(R.string.result_3_saya));
+        }
+        if (gameInt==4) {
+            numText.setText(getString(R.string.result_4_anda));
+            numText2.setText(getString(R.string.result_4_saya));
+        }
+
+
     }
 
 

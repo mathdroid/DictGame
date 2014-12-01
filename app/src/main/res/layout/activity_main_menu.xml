@@ -6,22 +6,49 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/red_400"
     tools:context=".MainMenuActivity">
 
     <TextView
-        android:text="@string/text_mainmenu"
+        android:text="@string/text_game_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/grey_0"
 
+        android:textSize="40sp" />
+    <TextView
+        android:text="@string/text_game_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="50sp"
+
+        android:textColor="@color/grey_0"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/duit"
+        android:maxWidth="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView3" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_instruction"
         android:id="@+id/buttonInstruction"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="20dp"
+        android:textColor="@color/grey_0" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,15 +57,65 @@
         android:id="@+id/buttonGame1"
         android:layout_below="@+id/buttonInstruction"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="20dp"
+        android:textColor="@color/grey_0" />
+
+    <TextView
+        android:text="@string/text_game_choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/buttonGame1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/grey_0" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@+id/textView4"
+
+        android:id="@+id/lLayout1"
+        android:layout_centerHorizontal="true">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation='horizontal'
+            android:id="@+id/radG">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/grey_0"
+            android:id="@+id/radioButton1" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textColor="@color/grey_0"
+            android:id="@+id/radioButton2" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textColor="@color/grey_0"
+            android:id="@+id/radioButton3" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textColor="@color/grey_0"
+            android:id="@+id/radioButton4" />
+        </RadioGroup>
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_about"
         android:id="@+id/buttonAbout"
-        android:layout_below="@+id/buttonGame1"
+        android:layout_below="@+id/lLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="10dp"
+        android:textColor="@color/grey_0" />
 
 </RelativeLayout>

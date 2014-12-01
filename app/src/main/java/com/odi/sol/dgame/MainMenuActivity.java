@@ -2,12 +2,16 @@ package com.odi.sol.dgame;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 
 public class MainMenuActivity extends Activity {
@@ -22,6 +26,21 @@ public class MainMenuActivity extends Activity {
         Button btnInstruction = (Button) findViewById(R.id.buttonInstruction);
         Button btnGame = (Button) findViewById(R.id.buttonGame1);
         Button btnAbout = (Button) findViewById(R.id.buttonAbout);
+        TextView txtTitle = (TextView) findViewById(R.id.textView2);
+        TextView txtSubTitle = (TextView) findViewById(R.id.textView3);
+        final RadioGroup radG1 = (RadioGroup) findViewById(R.id.radG);
+        final RadioButton diff1, diff2, diff3, diff4;
+
+        diff1 = (RadioButton) findViewById(R.id.radioButton1);
+        diff2 = (RadioButton) findViewById(R.id.radioButton2);
+        diff3 = (RadioButton) findViewById(R.id.radioButton3);
+        diff4 = (RadioButton) findViewById(R.id.radioButton4);
+
+        //Set Fonts
+        Typeface typeTitle = Typeface.createFromAsset(getAssets(), "fonts/ka1.ttf");
+        Typeface typeSub = Typeface.createFromAsset(getAssets(), "fonts/game_over.ttf");
+        txtTitle.setTypeface(typeTitle);
+        txtSubTitle.setTypeface(typeSub);
 
 
         //CREATE LISTENERS
@@ -37,6 +56,46 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainMenuActivity.this, GameActivity.class);
+
+                int gameInt =1;
+                String message = "THIS IS GAME MODE DEFAULT = 1";
+                if (radG1.getCheckedRadioButtonId() == -1)
+                {
+                    // no radio buttons are checked
+
+                    message = "THIS IS GAME MODE 1";
+                }
+                else
+                {
+                    // one of the radio buttons is checked
+                    if(diff1.isChecked())
+                    {
+                         //not checked
+                        message = "THIS IS GAME MODE 1";
+                    }
+                    if(diff2.isChecked())
+                    {
+                        //not checked
+                        message = "THIS IS GAME MODE 2";
+                        gameInt = 2;
+                    }
+                    if(diff3.isChecked())
+                    {
+                        //not checked
+                        message = "THIS IS GAME MODE 3";
+                        gameInt = 3;
+                    }
+                    if(diff4.isChecked())
+                    {
+                        //not checked
+                        message = "THIS IS GAME MODE 4";
+                        gameInt = 4;
+                    }
+
+                }
+
+                i.putExtra("GAMENUM", message);
+                i.putExtra("GAMEINT", gameInt);
                 startActivity(i);
             }
         });

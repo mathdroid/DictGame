@@ -1,9 +1,13 @@
 package com.odi.sol.dgame;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 public class GameActivity extends Activity {
@@ -12,6 +16,26 @@ public class GameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        Intent intent = getIntent();
+
+        final String message = intent.getStringExtra("GAMENUM");
+
+        final int gameInt = intent.getIntExtra("GAMEINT",0);
+        //Create text view
+        TextView dispText = (TextView) findViewById(R.id.txtGame);
+        dispText.setText(message);
+
+        Button btnRes = (Button) findViewById(R.id.buttonResult);
+
+        btnRes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GameActivity.this, ResultActivity.class);
+                i.putExtra("GAMEINT", gameInt);
+                startActivity(i);
+            }
+        });
     }
 
 

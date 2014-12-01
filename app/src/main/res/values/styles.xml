@@ -5,9 +5,25 @@
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/BaseActionbar</item>
     </style>
+    <style name="AppTheme2" parent="android:Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/BaseActionbar2</item>
+    </style>
+    <style name="AppTheme3" parent="android:Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/BaseActionbar3</item>
+    </style>
 
     <style name="BaseActionbar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/red_500</item>
+        <item name="android:titleTextStyle">@style/BaseActionbar.TitleTextStyle</item>
+    </style>
+    <style name="BaseActionbar2" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/yellow_500</item>
+        <item name="android:titleTextStyle">@style/BaseActionbar.TitleTextStyle</item>
+    </style>
+    <style name="BaseActionbar3" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/green_500</item>
         <item name="android:titleTextStyle">@style/BaseActionbar.TitleTextStyle</item>
     </style>
     <style name="BaseActionbar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">

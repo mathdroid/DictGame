@@ -19,7 +19,8 @@
         <activity
             android:name=".InstructionActivity"
             android:label="@string/title_activity_instruction"
-            android:parentActivityName=".MainMenuActivity" >
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme2" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.odi.sol.dgame.MainMenuActivity" />
@@ -27,7 +28,8 @@
         <activity
             android:name=".GameActivity"
             android:label="@string/title_activity_game"
-            android:parentActivityName=".MainMenuActivity" >
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme2" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.odi.sol.dgame.MainMenuActivity" />
@@ -35,7 +37,8 @@
         <activity
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".MainMenuActivity" >
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme2" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.odi.sol.dgame.MainMenuActivity" />
@@ -43,7 +46,8 @@
         <activity
             android:name=".ResultActivity"
             android:label="@string/title_activity_result"
-            android:parentActivityName=".GameActivity" >
+            android:parentActivityName=".GameActivity"
+            android:theme="@style/AppTheme3" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.odi.sol.dgame.GameActivity" />
