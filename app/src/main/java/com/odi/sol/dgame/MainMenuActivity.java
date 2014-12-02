@@ -35,6 +35,7 @@ public class MainMenuActivity extends Activity {
         diff2 = (RadioButton) findViewById(R.id.radioButton2);
         diff3 = (RadioButton) findViewById(R.id.radioButton3);
         diff4 = (RadioButton) findViewById(R.id.radioButton4);
+        diff1.setChecked(true);
 
         //Set Fonts
         Typeface typeTitle = Typeface.createFromAsset(getAssets(), "fonts/ka1.ttf");

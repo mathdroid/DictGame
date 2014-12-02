@@ -1,15 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
+    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/BaseActionbar</item>
     </style>
-    <style name="AppTheme2" parent="android:Theme.Holo.Light">
+    <style name="AppTheme2" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/BaseActionbar2</item>
     </style>
-    <style name="AppTheme3" parent="android:Theme.Holo.Light">
+    <style name="AppTheme3" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/BaseActionbar3</item>
     </style>
