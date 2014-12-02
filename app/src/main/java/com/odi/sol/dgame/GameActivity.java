@@ -17,25 +17,45 @@ import java.util.Random;
 public class GameActivity extends Activity {
     //public ImageButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
     public ImageButton[] imgBtns = new ImageButton[8];
+    public boolean[] bs = new boolean[8];
     //public Button pair;
-    public boolean aMatch, bMatch, cMatch, dMatch, b1, b2, b3, b4, b5, b6, b7, b8;
-    public int selected;
-
+    public boolean aMatch, bMatch, cMatch, dMatch;
+    public int selected, playerNum, aCount,bCount,cCount,dCount;
+    public int m, maxPrize, curPrize;
+    public Button btnRes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        Random rnd = new Random();
+        final Random rnd = new Random();
         selected=0;
+        playerNum=0;
+        m=0;
         Intent intent = getIntent();
         final String message = intent.getStringExtra("GAMENUM");
         final int gameInt = intent.getIntExtra("GAMEINT",0);
+        if (gameInt<3){
+            maxPrize=750000;
+        }
+        else if (gameInt==3){
+            maxPrize=3000000;
+        }
+        else{
+            maxPrize=15000000;
+        }
+        curPrize=0;
+        aCount=0;
+        bCount=0;
+        cCount=0;
+        dCount=0;
+
 
         //Create text view
-        TextView dispText = (TextView) findViewById(R.id.txtGame);
-        dispText.setText(message);
+        final TextView dispText = (TextView) findViewById(R.id.txtGame);
+        dispText.setText(message+" Player "+ String.valueOf(playerNum));
 
-        Button btnRes = (Button) findViewById(R.id.buttonResult);
+
+        btnRes = (Button) findViewById(R.id.buttonResult);
         imgBtns[0] =(ImageButton)findViewById(R.id.imageBtn1);
         imgBtns[1] =(ImageButton)findViewById(R.id.imageBtn2);
         imgBtns[2] =(ImageButton)findViewById(R.id.imageBtn3);
@@ -46,7 +66,7 @@ public class GameActivity extends Activity {
         imgBtns[7] =(ImageButton)findViewById(R.id.imageBtn8);
         //pair =(Button)findViewById(R.id.pair);
 
-        //pair.setVisibility(View.INVISIBLE);
+        btnRes.setVisibility(View.INVISIBLE);
 
         imgBtns[0].setOnClickListener(btn1_handler);
         imgBtns[1].setOnClickListener(btn2_handler);
@@ -68,14 +88,11 @@ public class GameActivity extends Activity {
         cMatch=false;
         dMatch=false;
 
-        b1= false;
-        b2= false;
-        b3= false;
-        b4= false;
-        b5= false;
-        b6= false;
-        b7= false;
-        b8= false;
+
+
+        for (int i=0;i<8;i++) {
+            bs[i]=false;
+        }
 
         final Handler handler=new Handler();
         handler.post(new Runnable(){
@@ -92,46 +109,103 @@ public class GameActivity extends Activity {
                         e.printStackTrace();
                     }
 
-                    if (b1 && b2) {
+                    if (bs[0] && bs[1]) {
                         aMatch = true;
+                        if (aCount<1){
+                            curPrize=curPrize+maxPrize/4;
+                        }
+                        aCount++;
                     }
-                    if (b3 && b4) {
+                    if (bs[2] && bs[3]) {
                         bMatch = true;
+                        if (bCount<1){
+                            curPrize=curPrize+maxPrize/4;
+                        }
+                        bCount++;
                     }
-                    if (b5 && b6) {
+                    if (bs[4] && bs[5]) {
                         cMatch = true;
+                        if (cCount<1){
+                            curPrize=curPrize+maxPrize/4;
+                        }
+                        cCount++;
                     }
-                    if (b7 && b8) {
+                    if (bs[6] && bs[7]) {
                         dMatch = true;
+                        if (dCount<1){
+                            curPrize=curPrize+maxPrize/4;
+                        }
+                        dCount++;
                     }
 
                     if (!aMatch) {
                         imgBtns[0].setBackgroundResource(R.drawable.z);
                         imgBtns[1].setBackgroundResource(R.drawable.z);
-                        b1 = false;
-                        b2 = false;
+                        bs[0] = false;
+                        bs[1] = false;
                     }
                     if (!bMatch) {
                         imgBtns[2].setBackgroundResource(R.drawable.z);
                         imgBtns[3].setBackgroundResource(R.drawable.z);
-                        b3 = false;
-                        b4 = false;
+                        bs[2] = false;
+                        bs[3] = false;
                     }
                     if (!cMatch) {
                         imgBtns[4].setBackgroundResource(R.drawable.z);
                         imgBtns[5].setBackgroundResource(R.drawable.z);
-                        b5 = false;
-                        b6 = false;
+                        bs[4] = false;
+                        bs[5] = false;
                     }
                     if (!dMatch) {
                         imgBtns[6].setBackgroundResource(R.drawable.z);
                         imgBtns[7].setBackgroundResource(R.drawable.z);
 
-                        b7 = false;
-                        b8 = false;
+                        bs[6] = false;
+                        bs[7] = false;
+                    }
+                    if (playerNum==0) {
+                        playerNum=1;
+                    }
+                    else{
+                        playerNum=0;
+                    }
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
-                handler.postDelayed(this,500); // set time here to refresh textView
+
+                m=0;
+                if (playerNum!=0){
+
+                        m = rnd.nextInt(8);
+                        if (!bs[m]) {
+                            try {
+                                Thread.sleep(100+rnd.nextInt(3)*100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            if (m == 1 || m == 0) {
+                                imgBtns[m].setBackgroundResource(R.drawable.a1);
+                            } else if (m == 2 || m == 3) {
+                                imgBtns[m].setBackgroundResource(R.drawable.b1);
+                            } else if (m == 4 || m == 5) {
+                                imgBtns[m].setBackgroundResource(R.drawable.c1);
+                            } else if (m == 6 || m == 7) {
+                                imgBtns[m].setBackgroundResource(R.drawable.d1);
+                            }
+                            selected++;
+                            bs[m] = true;
+
+                        }
+
+                }
+                if (aMatch&&bMatch&&cMatch&&dMatch){
+                    btnRes.setVisibility(View.VISIBLE);
+                }
+                dispText.setText("SCORE: " + String.valueOf(curPrize));
+                handler.postDelayed(this,100); // set time here to refresh textView
 
             }
 
@@ -151,10 +225,10 @@ public class GameActivity extends Activity {
 
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b1)&&(selected<2)) {
+            if ((!bs[0])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[0].setBackgroundResource(R.drawable.a1);
                 selected++;
-                b1 = true;
+                bs[0] = true;
             }
 
         }
@@ -163,10 +237,10 @@ public class GameActivity extends Activity {
 
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b2)&&(selected<2)) {
+            if ((!bs[1])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[1].setBackgroundResource(R.drawable.a1);
                 selected++;
-                b2 = true;
+                bs[1] = true;
             }
         }
     };
@@ -175,10 +249,10 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b3)&&(selected<2)) {
+            if ((!bs[2])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[2].setBackgroundResource(R.drawable.b1);
                 selected++;
-                b3 = true;
+                bs[2] = true;
             }
 
 
@@ -189,10 +263,10 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b4)&&(selected<2)) {
+            if ((!bs[3])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[3].setBackgroundResource(R.drawable.b1);
                 selected++;
-                b4 = true;
+                bs[3] = true;
             }
 
         }
@@ -202,10 +276,10 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b5)&&(selected<2)) {
+            if ((!bs[4])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[4].setBackgroundResource(R.drawable.c1);
                 selected++;
-                b5 = true;
+                bs[4] = true;
             }
 
         }
@@ -215,10 +289,10 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b6)&&(selected<2)) {
+            if ((!bs[5])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[5].setBackgroundResource(R.drawable.c1);
                 selected++;
-                b6 = true;
+                bs[5] = true;
             }
 
 
@@ -229,10 +303,10 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b7)&&(selected<2)) {
+            if ((!bs[6])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[6].setBackgroundResource(R.drawable.d1);
                 selected++;
-                b7 = true;
+                bs[6] = true;
             }
 
         }
@@ -242,10 +316,10 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            if ((!b8)&&(selected<2)) {
+            if ((!bs[7])&&(selected<2)&&(playerNum==0)) {
                 imgBtns[7].setBackgroundResource(R.drawable.d1);
                 selected++;
-                b8 = true;
+                bs[7] = true;
             }
         }
     };

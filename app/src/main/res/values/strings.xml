@@ -17,11 +17,22 @@
     <string name="btn_game1">New Game</string>
     <string name="btn_about">About the App</string>
 
-    <string name="btn_result">DEBUG RESULTS</string>
+    <string name="btn_result">Claim Prize!</string>
 
     <!-- Instructions -->
-    <string name="text_instruction">THIS IS INSTRUCTION</string>
-    <string name="text_about">About the game: </string>
+    <string name="text_instruction">Intruksi:
+Dalam permainan ini anda hanya perlu untuk membuka pasangan yang sama hingga seluruh kartu habis dan jika berhasil menyelesaikan permainan, ada hadiah besar menanti anda! Yang menarik dari permainan ini adalah anda tidak bermain sendiri. Ada orang lain yang secara random akan menjadi rekan anda dalam permainan ini. Anda akan bekerja sama dengan dia untuk membuka kartu-kartu yang ada. Di akhir permainan akan disebutkan berapa jumlah hadiah untuk kedua pemain. Secara random, akan ada salah satu pemain yang berhak untuk menentukan jumlah pembagian hadiah (pemain A) untuk pemain lainnya (pemain B). SELAMAT BERMAIN DAN MENANGKAN HADIAHNYA!!!</string>
+    <string name="text_about">Findez.Co adalah perusahaan yang orientasi profitnya bersumber dari iklan, maka kami
+berusaha untuk menghadirkan game yang dengan mudah diserap oleh pasar.\n\n
+
+Untuk itu diciptakanlah permainan yang tidak seperti permainan pada umumnya yang hanya berguna untuk penyaluran hobi atau bersenang-senang.\n\n
+
+Permainan ini bisa memberikan uang dalam bentuk nyata melalui rekening paypal atau atm withdrawal.\n\n
+
+Mengikuti perkembangan sosial media yang sangat pesat, permainan ini juga bisa digunakan untuk mencari teman baru, karena setiap kali anda mulai bermain akan ada orang lain yang secara random dipasangkan dengan anda untuk bermain bersama. Hadiah pada permainan ini juga akan diberikan untuk satu pasang (bukan satu pemain), yaitu anda dan rekan main anda yang random.\n\n
+
+Yang unik adalah salah satu dari pemain akan mendapatkan kesempatan untuk menentukan jumlah hadiah yang akan diberikan kepada rekan bermainnya.\n\n
+ </string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_result">ResultActivity</string>
