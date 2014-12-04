@@ -58,6 +58,9 @@ Yang unik adalah salah satu dari pemain akan mendapatkan kesempatan untuk menent
     <string name="disagree">Disagree</string>
     <string name="txtCongratsTop">Selamat, kalian memenangkan</string>
     <string name="pleaseWait">Please wait...</string>
+
     <string name="title_activity_ques">QuesActivity</string>
+
+    <string name="qlink"><a href="http://bit.ly/feedbackfindez">http://bit.ly/feedbackfindez</a></string>
 
 </resources>
