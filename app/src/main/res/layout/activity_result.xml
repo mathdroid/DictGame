@@ -6,53 +6,118 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-
-    android:background="@color/green_400"
+    android:orientation="vertical"
+    android:background="@color/green_500"
     tools:context="com.odi.sol.dgame.ResultActivity">
 
-    <TextView
-        android:text="@string/result_maaf"
-        android:layout_width="wrap_content"
-        android:id="@+id/txtRes1"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textSize="50sp" />
-    <TextView
-        android:text="@string/result_1_anda"
-        android:layout_width="wrap_content"
-        android:id="@+id/txtResNum1"
+        android:weightSum="1"
+        android:id="@+id/linTop"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/txtRes1"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/txtResNum1"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/txtRes1"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/txtRes2"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/txtResNum1"
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/txtResNum2"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/txtRes2"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/txtRes3"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/txtResNum2"
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/txtRes1"
-        android:textSize="30sp"/>
-    <TextView
-        android:text="@string/result_untukanda"
-        android:layout_width="wrap_content"
-        android:id="@+id/txtRes2"
+        android:weightSum="1"
+        android:id="@+id/linM"
+        android:layout_below="@+id/linTop"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/karena"
+            android:id="@+id/txtMsg2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/txtResNum1"
-        android:textSize="50sp"/>
-    <TextView
-        android:text="@string/result_1_saya"
+        android:id="@+id/linBot"
+        android:layout_below="@+id/linM">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agree"
+            android:id="@+id/btnAgree"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/disagree"
+            android:id="@+id/btnDisagree"
+            android:layout_weight="0" />
+    </LinearLayout>
+
+    <Button
         android:layout_width="wrap_content"
-        android:id="@+id/txtResNum2"
         android:layout_height="wrap_content"
+        android:text="View share split"
+        android:id="@+id/btnVRes"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/txtRes2"
-        android:textSize="30sp"/>
-    <TextView
-        android:text="@string/result_untuksaya"
-        android:layout_width="wrap_content"
-        android:id="@+id/txtRes3"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/txtResNum2"
-        android:textSize="50sp" />
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

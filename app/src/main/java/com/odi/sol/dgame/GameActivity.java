@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -19,10 +20,12 @@ public class GameActivity extends Activity {
     public ImageButton[] imgBtns = new ImageButton[8];
     public boolean[] bs = new boolean[8];
     //public Button pair;
-    public boolean aMatch, bMatch, cMatch, dMatch;
-    public int selected, playerNum, aCount,bCount,cCount,dCount;
+    public boolean aMatch, bMatch, cMatch, dMatch,gameRun;
+    public int selected, playerNum, turnNum, aCount,bCount,cCount,dCount;
     public int m, maxPrize, curPrize;
     public Button btnRes;
+    private Thread thread;
+    public ImageView imgP1, imgP2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class GameActivity extends Activity {
         final Random rnd = new Random();
         selected=0;
         playerNum=0;
+        turnNum=0;
         m=0;
         Intent intent = getIntent();
         final String message = intent.getStringExtra("GAMENUM");
@@ -77,6 +81,9 @@ public class GameActivity extends Activity {
         imgBtns[6].setOnClickListener(btn7_handler);
         imgBtns[7].setOnClickListener(btn8_handler);
 
+        imgP1 = (ImageView) findViewById(R.id.imgP1);
+        imgP2 = (ImageView) findViewById(R.id.imgP2);
+
         //pair.setOnClickListener(pair_handler);
 
         for (int i=0;i<8;i++) {
@@ -85,8 +92,9 @@ public class GameActivity extends Activity {
 
         aMatch=false;
         bMatch=false;
-        cMatch=false;
         dMatch=false;
+        cMatch=false;
+        gameRun=true;
 
 
 
@@ -94,6 +102,26 @@ public class GameActivity extends Activity {
             bs[i]=false;
         }
 
+        /*thread=  new Thread(){
+            @Override
+            public void run(){
+                while(gameRun){
+                    if (playerNum==0){
+                        imgP1.setBackgroundResource(R.drawable.ic_active1);
+                        imgP2.setBackgroundResource(R.drawable.ic_passive2);
+                    }
+                    else{
+                        imgP1.setBackgroundResource(R.drawable.ic_passive1);
+                        imgP2.setBackgroundResource(R.drawable.ic_active2);
+
+                    }
+                }
+
+                // TODO
+            }
+        };
+
+        thread.start();*/
         final Handler handler=new Handler();
         handler.post(new Runnable(){
 
@@ -101,6 +129,15 @@ public class GameActivity extends Activity {
             public void run() {
 
                 // upadte textView here
+                if (playerNum==0){
+                    imgP1.setBackgroundResource(R.drawable.ic_active1);
+                    imgP2.setBackgroundResource(R.drawable.ic_passive2);
+                }
+                else{
+                    imgP1.setBackgroundResource(R.drawable.ic_passive1);
+                    imgP2.setBackgroundResource(R.drawable.ic_active2);
+
+                }
                 if (selected>1) {
                     selected = 0;
                     try {
@@ -163,12 +200,6 @@ public class GameActivity extends Activity {
                         bs[6] = false;
                         bs[7] = false;
                     }
-                    if (playerNum==0) {
-                        playerNum=1;
-                    }
-                    else{
-                        playerNum=0;
-                    }
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
@@ -177,12 +208,15 @@ public class GameActivity extends Activity {
                 }
 
                 m=0;
-                if (playerNum!=0){
+                // BASE TURN: PLAYER FIRST CPU LATER
+                if (turnNum==0) {
+
+                    if (playerNum != 0) {
 
                         m = rnd.nextInt(8);
                         if (!bs[m]) {
                             try {
-                                Thread.sleep(100+rnd.nextInt(3)*100);
+                                Thread.sleep(100 + rnd.nextInt(10) * 100);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -197,12 +231,45 @@ public class GameActivity extends Activity {
                             }
                             selected++;
                             bs[m] = true;
+                            turnNum=1;
+                            playerNum=1;
 
                         }
 
+                    }
+                }
+                // ODD TURN
+                else{
+                    if (playerNum != 0) {
+
+                        m = rnd.nextInt(8);
+                        if (!bs[m]) {
+                            try {
+                                Thread.sleep(100 + rnd.nextInt(10) * 100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            if (m == 1 || m == 0) {
+                                imgBtns[m].setBackgroundResource(R.drawable.a1);
+                            } else if (m == 2 || m == 3) {
+                                imgBtns[m].setBackgroundResource(R.drawable.b1);
+                            } else if (m == 4 || m == 5) {
+                                imgBtns[m].setBackgroundResource(R.drawable.c1);
+                            } else if (m == 6 || m == 7) {
+                                imgBtns[m].setBackgroundResource(R.drawable.d1);
+                            }
+                            selected++;
+                            bs[m] = true;
+                            playerNum=0;
+
+                        }
+
+                    }
                 }
                 if (aMatch&&bMatch&&cMatch&&dMatch){
                     btnRes.setVisibility(View.VISIBLE);
+                    imgP1.setBackgroundResource(R.drawable.ic_passive1);
+                    imgP2.setBackgroundResource(R.drawable.ic_passive2);
                 }
                 dispText.setText("SCORE: " + String.valueOf(curPrize));
                 handler.postDelayed(this,100); // set time here to refresh textView
@@ -229,6 +296,15 @@ public class GameActivity extends Activity {
                 imgBtns[0].setBackgroundResource(R.drawable.a1);
                 selected++;
                 bs[0] = true;
+
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
+
             }
 
         }
@@ -241,6 +317,13 @@ public class GameActivity extends Activity {
                 imgBtns[1].setBackgroundResource(R.drawable.a1);
                 selected++;
                 bs[1] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
         }
     };
@@ -253,6 +336,13 @@ public class GameActivity extends Activity {
                 imgBtns[2].setBackgroundResource(R.drawable.b1);
                 selected++;
                 bs[2] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
 
 
@@ -267,6 +357,13 @@ public class GameActivity extends Activity {
                 imgBtns[3].setBackgroundResource(R.drawable.b1);
                 selected++;
                 bs[3] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
 
         }
@@ -280,6 +377,13 @@ public class GameActivity extends Activity {
                 imgBtns[4].setBackgroundResource(R.drawable.c1);
                 selected++;
                 bs[4] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
 
         }
@@ -293,6 +397,13 @@ public class GameActivity extends Activity {
                 imgBtns[5].setBackgroundResource(R.drawable.c1);
                 selected++;
                 bs[5] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
 
 
@@ -307,6 +418,13 @@ public class GameActivity extends Activity {
                 imgBtns[6].setBackgroundResource(R.drawable.d1);
                 selected++;
                 bs[6] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
 
         }
@@ -320,6 +438,13 @@ public class GameActivity extends Activity {
                 imgBtns[7].setBackgroundResource(R.drawable.d1);
                 selected++;
                 bs[7] = true;
+                if (turnNum==0){
+                    playerNum=1;
+                }
+                else{
+                    turnNum=0;
+                    playerNum=0;
+                }
             }
         }
     };

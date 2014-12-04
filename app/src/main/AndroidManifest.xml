@@ -52,6 +52,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.odi.sol.dgame.GameActivity" />
         </activity>
+        <activity
+            android:name=".QuesActivity"
+            android:label="@string/title_activity_ques"
+            android:parentActivityName=".ResultActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.odi.sol.dgame.ResultActivity" />
+        </activity>
     </application>
 
 </manifest>

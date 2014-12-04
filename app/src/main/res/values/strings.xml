@@ -13,10 +13,8 @@
     <string name="text_game_subtitle">Just play and get money</string>
     <string name="text_game_choose">Choose difficulty:</string>
     <string name="btn_instruction">Instructions</string>
-
     <string name="btn_game1">New Game</string>
     <string name="btn_about">About the App</string>
-
     <string name="btn_result">Claim Prize!</string>
 
     <!-- Instructions -->
@@ -31,24 +29,35 @@ Permainan ini bisa memberikan uang dalam bentuk nyata melalui rekening paypal at
 
 Mengikuti perkembangan sosial media yang sangat pesat, permainan ini juga bisa digunakan untuk mencari teman baru, karena setiap kali anda mulai bermain akan ada orang lain yang secara random dipasangkan dengan anda untuk bermain bersama. Hadiah pada permainan ini juga akan diberikan untuk satu pasang (bukan satu pemain), yaitu anda dan rekan main anda yang random.\n\n
 
-Yang unik adalah salah satu dari pemain akan mendapatkan kesempatan untuk menentukan jumlah hadiah yang akan diberikan kepada rekan bermainnya.\n\n
- </string>
+Yang unik adalah salah satu dari pemain akan mendapatkan kesempatan untuk menentukan jumlah hadiah yang akan diberikan kepada rekan bermainnya.\n\n</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_result">ResultActivity</string>
-
-
-    <string name="result">Saya akan membagikan</string>
+    <string name="result">{Player_2} akan membagikan</string>
     <string name="result_maaf">Maaf, saya akan membagikan</string>
-    <string name="result_1_anda">70.000</string>
-    <string name="result_1_saya">130.000</string>
-    <string name="result_2_anda">70.000</string>
-    <string name="result_2_saya">130.000</string>
-    <string name="result_3_anda">1.300.000</string>
-    <string name="result_3_saya">1.700.000</string>
-    <string name="result_4_anda">6.500.000</string>
-    <string name="result_4_saya">8.500.000</string>
+    <string name="result_1_anda">150.000</string>
+    <string name="result_1_saya">600.000</string>
+    <string name="result_2_anda">150.000</string>
+    <string name="result_2_saya">600.000</string>
+    <string name="result_3_anda">600.000</string>
+    <string name="result_3_saya">2.400.000</string>
+    <string name="result_4_anda">3.000.000</string>
+    <string name="result_4_saya">12.000.000</string>
+    <string name="result_1r_anda">225.000</string>
+    <string name="result_1r_saya">525.000</string>
+    <string name="result_2r_anda">225.000</string>
+    <string name="result_2r_saya">525.000</string>
+    <string name="result_3r_anda">900.000</string>
+    <string name="result_3r_saya">2.100.000</string>
+    <string name="result_4r_anda">4.500.000</string>
+    <string name="result_4r_saya">10.500.000</string>
     <string name="result_untukanda">untuk anda, dan</string>
-    <string name="result_untuksaya">untuk saya.</string>
+    <string name="result_untuksaya">untuk {Player_2}.</string>
+    <string name="karena">MESSAGE: Karena saya dapat membagikan seperti saya mau.</string>
+    <string name="agree">Agree</string>
+    <string name="disagree">Disagree</string>
+    <string name="txtCongratsTop">Selamat, kalian memenangkan</string>
+    <string name="pleaseWait">Please wait...</string>
+    <string name="title_activity_ques">QuesActivity</string>
 
 </resources>

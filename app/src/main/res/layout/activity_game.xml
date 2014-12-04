@@ -9,13 +9,32 @@
     android:background="@color/yellow_500"
     tools:context="com.odi.sol.dgame.GameActivity">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:id="@+id/txtGame"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="75dp"
+            android:id="@+id/imgP1"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"></LinearLayout>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="75dp"
+            android:id="@+id/imgP2"
+            android:layout_alignParentRight="true"
+            android:layout_weight="0" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -100,6 +119,14 @@
         android:text="@string/btn_result"
         android:id="@+id/buttonResult"
         android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/hello_world"
+        android:layout_width="wrap_content"
+        android:id="@+id/txtGame"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
 
